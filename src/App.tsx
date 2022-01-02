@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import s from './style.module.css'
 import './App.css';
+import Field from "./components/Field";
+import Buttons from "./components/Buttons";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    // Создать переменные для оптимизации
+    const startValue = 0;
+    const endValue = 5;
+
+    let [inc, setInc] = useState<number>(0)
+
+    const incCounter = () => {
+        setInc(inc => inc + 1)
+    }
+
+    const resetCounter = () => {
+        setInc(0)
+    }
+
+    return (
+        <div className={s.mainBody}>
+            <Field value={inc} endValue={endValue}/>
+            <Buttons value={inc} startValue={startValue} endValue={endValue} incCounter={incCounter} resetCounter={resetCounter}/>
+        </div>
+    );
 }
 
 export default App;
