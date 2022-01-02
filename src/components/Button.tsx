@@ -4,11 +4,10 @@ import s from '../style.module.css'
 type buttonPropsType = {
     name: string
     callback: () => void
-    disabled:boolean
+    disabled: boolean
 }
 
 export const Button = ({name, callback, disabled}: buttonPropsType) => {
-
 
 
     return (
