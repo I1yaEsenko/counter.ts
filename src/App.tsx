@@ -1,31 +1,90 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './style.module.css'
 import './App.css';
-import Field from "./components/Field";
-import Buttons from "./components/Buttons";
+import CounterField from "./components/CounterField";
+import CounterButtons from "./components/CounterButtons";
+import SetField from "./components/SetField";
+import SetButton from "./components/SetButton";
 
 
 function App() {
-    // Создать переменные для оптимизации
-    const startValue = 0;
-    const endValue = 5;
 
-    let [inc, setInc] = useState<number>(0)
 
-    const incCounter = () => {
-        setInc(inc => inc + 1)
-    }
+   let [valueStart, setValueStart] = useState<number>(0)
+   let [valueEnd, setValueEnd] = useState<number>(5)
+   let [counter, setCounter] = useState<number>(valueStart)
+   const [error, setError] = useState<string | null>(null)
+   const [message, setMessage] = useState<string | null>('enter values counter and press "Set"')
 
-    const resetCounter = () => {
-        setInc(0)
-    }
 
-    return (
-        <div className={s.mainBody}>
-            <Field value={inc} endValue={endValue}/>
-            <Buttons value={inc} startValue={startValue} endValue={endValue} incCounter={incCounter} resetCounter={resetCounter}/>
-        </div>
-    );
+   useEffect(() => {
+      let valueStartAsString = localStorage.getItem("valueStart")
+      let valueEndAsString = localStorage.getItem("valueEnd")
+      if (valueStartAsString) {
+         let newValueStart = JSON.parse(valueStartAsString)
+         setValueStart(newValueStart)
+         setCounter(newValueStart)
+      }
+      if (valueEndAsString) {
+         let newValueEnd = JSON.parse(valueEndAsString)
+         setValueEnd(newValueEnd)
+      }
+   }, [])
+
+   const incCounter = () => {
+      setCounter(counter + 1)
+   }
+
+   const resetCounter = () => {
+      setCounter(valueStart)
+   }
+
+   const changeStartValue = (value: number) => {
+      setValueStart(value)
+   }
+
+   const changeEndValue = (value: number) => {
+      setValueEnd(value)
+   }
+
+   const setValueHandler = () => {
+      localStorage.setItem("valueStart", JSON.stringify(valueStart))
+      localStorage.setItem("valueEnd", JSON.stringify(valueEnd))
+      setCounter(valueStart)
+      setMessage('')
+   }
+
+   return (
+      <div className={s.wrapper}>
+         <div className={s.mainBody}>
+            <SetField
+               changeStartValue={changeStartValue}
+               changeEndValue={changeEndValue}
+               setValueStart={valueStart}
+               setValueEnd={valueEnd}
+               setError={setError}
+            />
+            <SetButton
+               valueStart={valueStart}
+               valueEnd={valueEnd}
+               setValueHandler={setValueHandler}/>
+         </div>
+
+         <div className={s.mainBody}>
+            <CounterField valueCounter={counter}
+                          valueEnd={valueEnd}
+                          message={message}
+                          error={error}
+            />
+            <CounterButtons valueCounter={counter}
+                            endValue={valueEnd}
+                            message={message}
+                            error={error}
+                            incCounter={incCounter}
+                            resetCounter={resetCounter}/>
+         </div>
+      </div>
+   );
 }
 
 export default App;
