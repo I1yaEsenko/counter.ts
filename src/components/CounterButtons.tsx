@@ -13,11 +13,12 @@ type ButtonsPropsType = {
 
 const CounterButtons = ({incCounter, resetCounter, valueCounter, endValue, message, error}: ButtonsPropsType) => {
    const disabledButtonInc = () => valueCounter === endValue || message !== '' || error !== ''
+   const disabledButtonReset = () => message !== '' || error !== ''
 
    return (
       <div className={s.buttonsWrapper}>
          <Button name={'inc'} callback={incCounter} disabled={disabledButtonInc()}/>
-         <Button name={'reset'} callback={resetCounter} disabled={false}/>
+         <Button name={'reset'} callback={resetCounter} disabled={disabledButtonReset()}/>
       </div>
    );
 };
