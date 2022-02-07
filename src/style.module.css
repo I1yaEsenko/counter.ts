@@ -9,6 +9,7 @@
     border-radius: 10px;
     padding: 20px;
     margin: 10px;
+
 }
 
 .mainField {
@@ -55,7 +56,7 @@
 }
 
 .buttonClick {
-    width: 200px;
+    width: 180px;
     background-color: #61dafb;
     color: #282c34;
     border: none;
@@ -64,6 +65,7 @@
     font-weight: bold;
     padding: 10px 5px;
     cursor: pointer;
+    margin: 5px;
 }
 
 
