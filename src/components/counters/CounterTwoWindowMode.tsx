@@ -66,7 +66,8 @@ export const CounterTwoWindowMode = () => {
                valueStart={valueStart}
                valueEnd={valueEnd}
                setValueHandler={setValueHandler}
-               setValueStart={counter}/>
+               setValueDisable={counter}
+            />
          </div>
 
          <div className={s.mainBody}>

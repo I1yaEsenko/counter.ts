@@ -6,13 +6,13 @@ type SetButtonType = {
    setValueHandler: () => void
    valueStart: number
    valueEnd: number
-   setValueStart:number
+   setValueDisable:number
 }
 
-const SetButton = ({setValueHandler, valueStart, valueEnd, setValueStart}: SetButtonType) => {
+const SetButton = ({setValueHandler, valueStart, valueEnd, setValueDisable}: SetButtonType) => {
 
    const disabledSetButton = () =>
-      valueStart > valueEnd || valueStart === valueEnd || valueStart < 0 || setValueStart === valueStart
+      valueStart > valueEnd || valueStart === valueEnd || valueStart < 0 || setValueDisable === valueStart
 
    return (
       <div className={s.buttonsWrapper}>
