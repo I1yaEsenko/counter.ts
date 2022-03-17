@@ -4,6 +4,7 @@ import SetField from "../SetField";
 import CounterSingleButtons from "../CounterSingleButtons";
 import CounterSingleField from "../CounterSingleField";
 import SetSingleButton from "../SetSingleButton";
+import SetSingleField from "../SetSingleField";
 
 export const CounterSingleWindowMode = () => {
 
@@ -71,7 +72,7 @@ export const CounterSingleWindowMode = () => {
                                      settingsHandler={settingsHandler}/>
             </div>) : (
             <div className={s.mainBody}>
-               <SetField
+               <SetSingleField
                   changeStartValue={changeStartValue}
                   changeEndValue={changeEndValue}
                   setValueStart={valueStart}

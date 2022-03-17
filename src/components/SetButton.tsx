@@ -12,7 +12,7 @@ type SetButtonType = {
 const SetButton = ({setValueHandler, valueStart, valueEnd, setValueDisable}: SetButtonType) => {
 
    const disabledSetButton = () =>
-      valueStart > valueEnd || valueStart === valueEnd || valueStart < 0 || setValueDisable === valueStart
+      valueStart > valueEnd || valueStart === valueEnd || valueStart < 0
 
    return (
       <div className={s.buttonsWrapper}>

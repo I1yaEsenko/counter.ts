@@ -6,10 +6,10 @@ const Links = () => {
    return (
       <div className='links'>
          <div className='item'>
-            <NavLink to='/singlemode' className={({isActive}) => (isActive ? "link active" : " link")} >SingleMode</NavLink>
+            <NavLink to='/counter.ts/singlemode' className={({isActive}) => (isActive ? "link active" : " link")} >SingleMode</NavLink>
          </div>
          <div className='item'>
-            <NavLink to='/twowindowmode' className={({isActive})=>  (isActive ? "link active" : " link")}>TwoWindowMode</NavLink>
+            <NavLink to='/counter.ts/twowindowmode' className={({isActive})=>  (isActive ? "link active" : " link")}>TwoWindowMode</NavLink>
          </div>
       </div>
    );

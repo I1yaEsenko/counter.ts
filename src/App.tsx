@@ -15,8 +15,8 @@ function App() {
             <Links/>
             <div>
                <Routes>
-                  <Route path='/twowindowmode' element={<CounterTwoWindowMode/>}/>
-                  <Route path='/singlemode' element={<CounterSingleWindowMode/>}/>
+                  <Route path='/counter.ts/twowindowmode' element={<CounterTwoWindowMode/>}/>
+                  <Route path='/counter.ts/singlemode' element={<CounterSingleWindowMode/>}/>
                </Routes>
             </div>
          </div>

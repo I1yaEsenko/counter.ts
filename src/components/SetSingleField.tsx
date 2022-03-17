@@ -5,13 +5,12 @@ type SetFiledType = {
    changeEndValue: (value: number) => void
    changeStartValue: (value: number) => void
    setError:(value:string)=>void
-   setMessage:(value:string)=>void
    setValueEnd: number
    setValueStart: number
 }
 
 
-const SetField = ({setValueEnd, setValueStart, changeEndValue, changeStartValue, setError, setMessage}: SetFiledType) => {
+const SetField = ({setValueEnd, setValueStart, changeEndValue, changeStartValue, setError}: SetFiledType) => {
 
 
 
@@ -20,7 +19,6 @@ const SetField = ({setValueEnd, setValueStart, changeEndValue, changeStartValue,
       changeStartValue(JSON.parse(startValue))
       JSON.parse(startValue) > setValueEnd || JSON.parse(startValue) < 0 || JSON.parse(startValue) === setValueEnd
          ? setError('Incorrect value') : setError('')
-      setMessage('enter values counter and press "Set"')
    }
 
    const setEndValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -28,7 +26,6 @@ const SetField = ({setValueEnd, setValueStart, changeEndValue, changeStartValue,
       changeEndValue(JSON.parse(endValue))
       JSON.parse(endValue) === setValueStart || JSON.parse(endValue) < setValueStart
          ? setError('Incorrect value') : setError('')
-      setMessage('enter values counter and press "Set"')
    }
 
    const errorStartHandler =

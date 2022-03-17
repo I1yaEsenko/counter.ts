@@ -44,7 +44,6 @@ export const CounterTwoWindowMode = () => {
    }
 
    const setValueHandler = () => {
-      console.log(setCounter(valueStart))
       localStorage.setItem("valueStart", JSON.stringify(valueStart))
       localStorage.setItem("valueEnd", JSON.stringify(valueEnd))
       setCounter(valueStart)
@@ -61,6 +60,7 @@ export const CounterTwoWindowMode = () => {
                setValueStart={valueStart}
                setValueEnd={valueEnd}
                setError={setError}
+               setMessage={setMessage}
             />
             <SetButton
                valueStart={valueStart}
